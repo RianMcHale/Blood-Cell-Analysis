@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bloodcellanalysis.MainController">
+
+    <center>
+        <HBox spacing="20" style="-fx-padding: 20;">
+
+            <!-- Left Side: Images and Threshold Bar -->
+            <VBox spacing="20">
+
+                <!-- Image Stack: Original at bottom, TriColor above -->
+                <StackPane>
+                    <ImageView fx:id="originalImageView" preserveRatio="true" fitWidth="400" fitHeight="400" />
+                    <ImageView fx:id="triColorImageView" preserveRatio="true" fitWidth="400" fitHeight="400" visible="false" />
+                    <Pane fx:id="overlayPane" pickOnBounds="false" />
+                </StackPane>
+
+                <!-- Threshold Slider -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Color Detection Threshold:" />
+                    <Slider fx:id="thresholdSlider" blockIncrement="0.01" max="1.0" min="0.0" prefWidth="200" value="0.3" />
+                </HBox>
+
+                <!-- Cell Count Label -->
+                <Label fx:id="cellCountsLabel" style="-fx-font-size: 16px; -fx-padding: 10;" text="No analysis yet." />
+            </VBox>
+
+            <!-- Right Side: Buttons and Checkbox -->
+            <VBox spacing="15" alignment="TOP_CENTER">
+                <Button onAction="#onLoadImage" text="Load Image" prefWidth="150" />
+                <Button onAction="#onConvertToTriColor" text="Convert to TriColor" prefWidth="150" />
+                <Button onAction="#onRevertToOriginal" text="Revert to Original Image" prefWidth="150" />
+                <Button onAction="#onAnalyzeCells" text="Analyze Cells" prefWidth="150" />
+                <Button onAction="#onShowRectangles" text="Show Rectangles" prefWidth="150" />
+                <CheckBox fx:id="labelCellsCheckbox" text="Show Number of Rectangles?" />
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>
